@@ -1,5 +1,10 @@
 require "application_system_test_case"
 
+# Integration Test
+# 1 - We do not test controller action (we won't test def index, or def create)
+# 2 - We don't really test anything in the view
+# 3 - You test The User Journey
+
 class ProductsTest < ApplicationSystemTestCase
   test "visiting the index" do
     visit root_url
@@ -18,10 +23,13 @@ class ProductsTest < ApplicationSystemTestCase
     visit "/products/new"
 
     # 2) Fill the inputs
+
+    # fill_in by the element's id!!
     fill_in "product_name", with: "Le Wagon"
     fill_in "product_tagline", with: "Change your life: Learn to code"
 
     # 3) Click on the submit button
+    # click_on the button's text
     click_on 'Create Product'
 
     # 4) Check that the user is redirected back to the homepage and that the
